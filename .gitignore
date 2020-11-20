@@ -30,3 +30,36 @@
 *.exe
 *.out
 *.app
+
+# ignore DS_Store apple fie
+.DS_Store
+
+# ignore vscode file
+.vscode
+.ipynb_checkpoints
+
+# CMake files
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+DartConfiguration.tcl
+
+# C++ folders
+bin/
+lib/
+
+# Latex generated files
+*.aux
+*.synctex.gz
+
+# output file
+*.vtu
+*.msh
+*.log
