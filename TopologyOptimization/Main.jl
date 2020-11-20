@@ -44,7 +44,7 @@ l_pml = 2*l_0    # PML
 # Point source location
 pos = [0.0,H/2.0*0.9]
 δ = λ/resol      # Gaussian point source width
-I = 1e4
+I = 1e4          # Gaussian point source amplitude
 
 # PML parameters
 R = 1e-4         # Tolerence for PML reflection 
@@ -54,14 +54,13 @@ R = 1e-4         # Tolerence for PML reflection
 MeshGenerator(L,H,L_d,H_d,r_t,y_t,d_pml,l_0,l_d,l_pml)
 include("GridapSetup.jl")
 include("Objective.jl")
-
 # Filter and threshold paramters
 r = l_d*1.0      # Filter radius
 β = 5.0          # β∈[1,∞], threshold sharpness
 η = 0.5          # η∈[0,1], threshold center
 
 # Loss control
-α = 0.
+α = 0.           # α∈[0,∞], controls the material loss
 
 opt = Opt(:LD_MMA, np)
 opt.lower_bounds = 0.0
@@ -70,8 +69,8 @@ opt.ftol_rel = 1e-3
 opt.maxeval = 500
 opt.max_objective = g_p
 
-#(g_opt,p_opt,ret) = optimize(opt, rand(np))
-(g_opt,p_opt,ret) = optimize(opt, p)
+(g_opt,p_opt,ret) = optimize(opt, rand(np))
+#(g_opt,p_opt,ret) = optimize(opt, p)
 numevals = opt.numevals # the number of function evaluations
 
 # Display u and ε
